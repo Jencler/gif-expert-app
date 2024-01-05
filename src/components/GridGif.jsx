@@ -23,25 +23,30 @@ export const GridGif = ({ category }) => {
     setCurrentPage(selected);
   };
 
-  return (
-    <div key={category}>
-      <h3>{category}</h3>
-      <div className="card-grid">
-        {currentItems.map(gif => (
-          <GifCard key={gif.id} image={gif.images.downsized_medium.url} title={gif.title} />
-        ))}
-      </div>
 
-      <ReactPaginate
-        pageCount={Math.ceil(data.length / itemsPerPage)}
-        pageRangeDisplayed={5}
-        marginPagesDisplayed={2}
-        onPageChange={handlePageChange}
-        containerClassName={'pagination'}
-        activeClassName={'active'}
-        previousLabel="👈" // Puedes utilizar emojis, texto o incluso íconos aquí
-        nextLabel="👉"
-      />
-    </div>
+  return (
+    <>
+      <div className='container-grid-gifs' key={category}>
+        <h3 className='title-category-grid'>{category}</h3>
+        <div className="card-grid">
+          {currentItems.map(gif => (
+            <GifCard key={gif.id} image={gif.images.downsized_medium.url} title={gif.title} />
+          ))}
+        </div>
+
+      </div>
+      <div className='container-paginate'>
+        <ReactPaginate
+          pageCount={Math.ceil(data.length / itemsPerPage)}
+          pageRangeDisplayed={5}
+          marginPagesDisplayed={2}
+          onPageChange={handlePageChange}
+          containerClassName={'pagination'}
+          activeClassName={'active'}
+          previousLabel="👈" // Puedes utilizar emojis, texto o incluso íconos aquí
+          nextLabel="👉"
+        />
+      </div>
+    </>
   );
 };

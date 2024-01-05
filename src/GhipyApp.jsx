@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { InputAdd } from "./components/InputAdd"
 import { GridGif } from "./components/GridGif"
+import { Header } from "./components/Header"
 
 export const GhipyApp = () => {
+
 
   const [listGifs, setListGifs] = useState(['action'])
 
@@ -17,10 +19,8 @@ export const GhipyApp = () => {
 
   return (
     <div className="app">
-      <h1>Ghipy App</h1>
-
+      <Header />
       <InputAdd onNewCategory={(value) => addCategory(value)} />
- 
 
       {
         listGifs.map(category => (
